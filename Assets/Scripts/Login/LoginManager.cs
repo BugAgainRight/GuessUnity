@@ -13,6 +13,7 @@ namespace GuessUnity
     {
 
         public TMP_InputField AccountInput, PasswordInput;
+        public static string Account;
         public class LoginData
         {
             public string Account;
@@ -24,8 +25,8 @@ namespace GuessUnity
             public string Message;
         }
 
-        // Start is called before the first frame update
-        public void Start()
+
+        public void OnClick()
         {
             string account = " ";
             string password = " ";
@@ -37,6 +38,7 @@ namespace GuessUnity
             {
                 account = AccountInput.text;
                 password = PasswordInput.text;
+                Account = account;
                 
                 Verify(account, password);
             }
