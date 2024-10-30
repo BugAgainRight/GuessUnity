@@ -636,3 +636,5 @@ Assets/Plugins/Newtonsoft.Json.dll
 Assets/Plugins/Newtonsoft.Json.dll.meta
 /Assets/Fonts
 Packages/packages-lock.json
+ProjectSettings/PackageManagerSettings.asset
+Assets/Fonts.meta
