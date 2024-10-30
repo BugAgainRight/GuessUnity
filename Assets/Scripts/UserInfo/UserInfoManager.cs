@@ -50,7 +50,6 @@ namespace CircleOfLife
                 Transform inputArea = updateObj.GetChild(1).GetChild(0);
                 int inputAreaChildCount = inputArea.childCount;
                 Transform inputText = inputArea.GetChild(inputAreaChildCount - 1);
-
                 inputTextList.Add(inputText.GetComponent<TextMeshProUGUI>());
                 contextList.Add(context.GetComponent<TextMeshProUGUI>());
                 readModeObjectList.Add(readObj.gameObject);
@@ -61,7 +60,7 @@ namespace CircleOfLife
         public async void GetUserInfo()
         {
             // 从服务器获取用户信息
-            userInfo = await Server.Get<UserInfo>(userInfoPath, ("id", "1"));
+            userInfo = await Server.Get<UserInfo>(userInfoPath, ("Account", "?"));
             SetContext();
         }
 
@@ -107,6 +106,7 @@ namespace CircleOfLife
             updateInfoRequest.Address = inputTextList[2].text;
             updateInfoRequest.Account = inputTextList[3].text;
         }
+
         #endregion
         #region Mode
         public void SetReadMode()
