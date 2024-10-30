@@ -3,7 +3,11 @@ guid: 0ccaf4639a54f70408ffc3df03eda8f1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - LoginButton: {instanceID: 0}
+  - AccountInput: {instanceID: 0}
+  - PasswordInput: {instanceID: 0}
+  - test: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
