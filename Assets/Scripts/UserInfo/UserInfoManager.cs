@@ -14,10 +14,10 @@ namespace CircleOfLife
     }
     public class UserInfoManager : MonoBehaviour
     {
-        public List<TextMeshProUGUI> inputTextList;
-        public List<TextMeshProUGUI> ContextList;
-        public List<GameObject> readModeObjectList;
-        public List<GameObject> updateModeObjectList;
+        private List<TextMeshProUGUI> inputTextList;
+        private List<TextMeshProUGUI> contextList;
+        private List<GameObject> readModeObjectList;
+        private List<GameObject> updateModeObjectList;
         private UserInfo userInfo;
         private UpdateInfoRequest updateInfoRequest;
         private int childCount;
@@ -28,7 +28,7 @@ namespace CircleOfLife
         {
 
             inputTextList = new List<TextMeshProUGUI>();
-            ContextList = new List<TextMeshProUGUI>();
+            contextList = new List<TextMeshProUGUI>();
             readModeObjectList = new List<GameObject>();
             updateModeObjectList = new List<GameObject>();
             GetNecessaryCompoment();
@@ -52,7 +52,7 @@ namespace CircleOfLife
                 Transform inputText = inputArea.GetChild(inputAreaChildCount - 1);
 
                 inputTextList.Add(inputText.GetComponent<TextMeshProUGUI>());
-                ContextList.Add(context.GetComponent<TextMeshProUGUI>());
+                contextList.Add(context.GetComponent<TextMeshProUGUI>());
                 readModeObjectList.Add(readObj.gameObject);
                 updateModeObjectList.Add(updateObj.gameObject);
             }
@@ -60,14 +60,8 @@ namespace CircleOfLife
         #region Sever
         public async void GetUserInfo()
         {
-            //userInfo = await Server.Get<UserInfo>(userInfoPath, ("id", "1"));
-            userInfo = new UserInfo()
-            {
-                Name = "张三",
-                PhoneNumber = "123456789",
-                Address = "北京市海淀区",
-                //Account = "123456789"
-            };
+            // 从服务器获取用户信息
+            userInfo = await Server.Get<UserInfo>(userInfoPath, ("id", "1"));
             SetContext();
         }
 
@@ -75,7 +69,8 @@ namespace CircleOfLife
         {
             MessageBox.Open(("提交成功:\n", "提交内容:\n用户名" + updateInfoRequest.Name +
             "\n电话号码" + updateInfoRequest.PhoneNumber +
-            "\n地址" + updateInfoRequest.Address));
+            "\n地址" + updateInfoRequest.Address +
+            "\n账号" + updateInfoRequest.Account));
             StatusData context = await Server.Post<StatusData>(userInfoPath, updateInfoRequest);
             if (context.Success)
             {
@@ -92,17 +87,17 @@ namespace CircleOfLife
         #region UI
         public void SetContext()
         {
-            ContextList[0].text = userInfo.Name;
-            ContextList[1].text = userInfo.PhoneNumber;
-            ContextList[2].text = userInfo.Address;
-            //ContextList[3].text=userInfo.Account;
+            contextList[0].text = userInfo.Name;
+            contextList[1].text = userInfo.PhoneNumber;
+            contextList[2].text = userInfo.Address;
+            contextList[3].text = userInfo.Account;
         }
         public void SetContextFromUpdateInfoRequest()
         {
-            ContextList[0].text = updateInfoRequest.Name;
-            ContextList[1].text = updateInfoRequest.PhoneNumber;
-            ContextList[2].text = updateInfoRequest.Address;
-            //ContextList[3].text=updateInfoRequest.Account;
+            contextList[0].text = updateInfoRequest.Name;
+            contextList[1].text = updateInfoRequest.PhoneNumber;
+            contextList[2].text = updateInfoRequest.Address;
+            contextList[3].text = updateInfoRequest.Account;
         }
         public void GetInputText()
         {
@@ -110,7 +105,7 @@ namespace CircleOfLife
             updateInfoRequest.Name = inputTextList[0].text;
             updateInfoRequest.PhoneNumber = inputTextList[1].text;
             updateInfoRequest.Address = inputTextList[2].text;
-            //updateInfoRequest.Account=inputTextList[3].text;
+            updateInfoRequest.Account = inputTextList[3].text;
         }
         #endregion
         #region Mode

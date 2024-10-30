@@ -2,52 +2,62 @@ using System;
 using System.Collections.Generic;
 
 [Serializable]
-public class RegisterData{
+public class RegisterData
+{
     public string Account;
     public string Password;
     public string IDNumber; // 身份证ID
 }
 
 [Serializable]
-public class StatusData{
+public class StatusData
+{
     public bool Success;
     public string Message;
 }
 
 [Serializable]
-public class LoginData{
+public class LoginData
+{
     public string Account;
     public string Password;
 }
 
 [Serializable]
-public class LoginResponse{
+public class LoginResponse
+{
     public string ID; // 注册时后端给用户分配ID，登陆时返回
     public bool Success;
     public string Message;
 }
 
 [Serializable]
-public class UserInfo{
+public class UserInfo
+{
+    public string Account;
     public string Name;
     public string PhoneNumber;
     public string Address;
 }
 
 [Serializable]
-public class UpdateInfoRequest{
+public class UpdateInfoRequest
+{
+    public string Account;
     public string Name;
     public string PhoneNumber;
     public string Address;
 }
 
 [Serializable]
-public class EventList{
+public class EventList
+{
     public List<Event> Events = new();
 }
 
 [Serializable]
-public class Event{
+public class Event
+{
     public string ID;
     public string Name;	// 比赛名称
     public DateTime EventTime, StartGuessTime, EndGuessTime;
@@ -57,18 +67,21 @@ public class Event{
 }
 
 [Serializable]
-public class GuessList{
+public class GuessList
+{
     public List<GuessData> Guesses = new();
 }
 
 [Serializable]
-public class GuessData{
+public class GuessData
+{
     public string EventID;
     public int GuessWinner;
 }
 
 [Serializable]
-public class TimeData{
+public class TimeData
+{
     public DateTime ServerTime;
 }
 
