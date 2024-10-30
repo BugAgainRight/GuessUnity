@@ -1,8 +1,10 @@
-﻿namespace CircleOfLife.Configuration
+namespace CircleOfLife.Configuration
 {
     public enum UIIdentifier
     {
         MessageBox,
-        UISample
+        UISample,
+        PersonList,
+        MatchDetail
     }
 }

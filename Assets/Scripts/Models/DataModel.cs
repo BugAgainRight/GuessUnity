@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 [Serializable]
@@ -11,6 +11,7 @@ public class RegisterData{
 [Serializable]
 public class StatusData{
     public bool Success;
+    public string Message;
 }
 
 [Serializable]
@@ -69,4 +70,10 @@ public class GuessData{
 [Serializable]
 public class TimeData{
     public DateTime ServerTime;
+}
+
+public class EventGuessData
+{
+    public int[] GuessCount;
+    public int UserGuess;
 }
