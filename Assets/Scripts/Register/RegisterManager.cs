@@ -39,8 +39,12 @@ namespace GuessUnity
             //JudgeFormat(account, true);
             //JudgeFormat(password1,false);
             //IsMatch(password1,password2);
-            JudgeID(id);
+            //JudgeID(id);
 
+            if (JudgeFormat(account, true) && JudgeFormat(password1, false) && IsMatch(password1, password2) && JudgeID(id))
+            {
+                Register(account, password1, id);
+            }
             
         }
 
@@ -176,6 +180,31 @@ namespace GuessUnity
                 return false;//生日验证  
             }
             return true;
+        }
+
+        //向后端发送注册请求
+        async Task Register(string account, string password,string id)
+        {
+            var state = await Server.Post<StatusData>("/api/user/register", new RegisterData()
+            {
+                Account = account,
+                Password = password,
+                IDNumber = id
+            });
+            if (!state.Success)
+            {
+                MessageBox.Open(("注册失败", state.Message));
+                Clear("account");
+                Clear("password1");
+                Clear("password2");
+                Clear("id");
+            }
+            else
+            {
+                //注册成功，进入登录界面
+                //SceneRouter.GoTo
+            }
+
         }
     }
 
