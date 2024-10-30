@@ -634,3 +634,5 @@ Assets/UB/Install LWRP Fog.unitypackage.meta
 ProjectSettings/ProjectVersion.txt
 Assets/Plugins/Newtonsoft.Json.dll
 Assets/Plugins/Newtonsoft.Json.dll.meta
+/Assets/Fonts
+Packages/packages-lock.json
