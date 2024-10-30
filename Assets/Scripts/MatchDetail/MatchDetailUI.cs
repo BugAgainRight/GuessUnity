@@ -18,7 +18,7 @@ namespace CircleOfLife
     public class MatchDetailUI : ManagedUI<MatchDetailUI, Event>
     {
         public static string TmpAccount = "123456";
-        public static System.DateTime NowTime;
+        public static System.DateTime NowTime=>MainUIController.SimulatedTime;
         public TextMeshProUGUI MatchName;
         public TextMeshProUGUI PartyANames;
         public TextMeshProUGUI PartyBNames;
@@ -70,8 +70,8 @@ namespace CircleOfLife
             guessData.GuessWinner = eventGuessData.UserGuess;
             int allCount = eventGuessData.GuessCount[0] + eventGuessData.GuessCount[1];
             allCount = Mathf.Max(1, allCount);
-            ARate.text = (((int)(100f * eventGuessData.GuessCount[0] / allCount)) / 100f).ToString();
-            BRate.text = (((int)(100f * eventGuessData.GuessCount[1] / allCount)) / 100f).ToString();
+            ARate.text = "当前赔率：" + (((int)(100f * eventGuessData.GuessCount[0] / allCount)) / 100f).ToString();
+            BRate.text = "当前赔率：" + (((int)(100f * eventGuessData.GuessCount[1] / allCount)) / 100f).ToString();
 
             alreadySelect = guessData.GuessWinner != -1;
 
