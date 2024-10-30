@@ -65,3 +65,8 @@ public class GuessData{
     public string EventID;
     public int GuessWinner;
 }
+
+[Serializable]
+public class TimeData{
+    public DateTime ServerTime;
+}
