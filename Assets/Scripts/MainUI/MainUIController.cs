@@ -42,14 +42,16 @@ namespace CircleOfLife
             DateSortIcon.sprite = sortDate ? UseSortSprite : NoSortSprite;
             DateSortRect.MileaseTo(UMN.SizeDelta, new Vector2(1263.09f, sortDate ? 390.7f : 158.83f), 0.5f,
                                 0f, EaseFunction.Back, EaseType.Out).Play();
+            UpdateEventListView();
         }
         
         public void SwitchStageSort()
         {
             sortStage = !sortStage;
             StageSortIcon.sprite = sortStage ? UseSortSprite : NoSortSprite;
-            StageSortRect.MileaseTo(UMN.SizeDelta, new Vector2(1263.09f, sortDate ? 390.7f : 158.83f), 0.5f,
+            StageSortRect.MileaseTo(UMN.SizeDelta, new Vector2(1263.09f, sortStage ? 390.7f : 158.83f), 0.5f,
                 0f, EaseFunction.Back, EaseType.Out).Play();
+            UpdateEventListView();
         }
 
         private async void FetchEventList()
@@ -62,6 +64,8 @@ namespace CircleOfLife
                 monthReference.Add(month);
                 MonthDropDown.options.Add(new TMP_Dropdown.OptionData(month + "月"));
             }
+
+            MonthDropDown.value = 0;
         }
 
         public void UpdateDayDropDown()
