@@ -23,7 +23,8 @@ namespace CircleOfLife
 
         public override void OnSelect(PointerEventData eventData)
         {
-
+            var data = (Event)Binding;
+            MatchDetailUI.Open(data);
         }
 
         protected override void OnInitialize()
