@@ -1,26 +1,5 @@
 {
   "dependencies": {
-    "com.morizero.digitalruby.rainmaker": {
-      "version": "https://github.com/BugAgainRight/RainMaker.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "357ebafe20aed8e03b7a6a69bb428436f280e5e2"
-    },
-    "com.morizero.milease": {
-      "version": "https://github.com/MorizeroDev/Milease.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "60c97e0a403fd7b3b09130001f5ed985b9dc9f7c"
-    },
-    "com.morizero.milutools": {
-      "version": "https://github.com/MorizeroDev/Milutools.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "e7855bfe1bb472e39fbcc5c38adaaa7614760160"
-    },
     "com.unity.2d.animation": {
       "version": "9.1.1",
       "depth": 1,
@@ -295,13 +274,6 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
-    },
-    "party.para.util.colors": {
-      "version": "https://github.com/ParaParty/ParaPartyUtil.git?path=Colors",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "e42f45fc4f7d338a352d604ea8489d282f91007d"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

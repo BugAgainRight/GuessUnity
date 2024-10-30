@@ -1,0 +1,17 @@
+{
+    "name": "com.morizero.milutools",
+    "rootNamespace": "Milutools",
+    "references": [
+        "GUID:09ca8622b7d2630449f917d3ae64da1b",
+        "GUID:703e31ab76dbb7a419aa932c696d51cb"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
