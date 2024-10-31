@@ -2,7 +2,7 @@
 
 namespace Milutools.Milutools.UI
 {
-    public class SimpleManagedUI : ManagedUI
+    public class SimpleManagedUI : ManagedUI<SimpleManagedUI, object>
     {
         protected override void Begin()
         {
@@ -14,15 +14,9 @@ namespace Milutools.Milutools.UI
             
         }
 
-        internal override void Open(object parameter)
+        public override void AboutToOpen(object parameter)
         {
             
-        }
-        
-        public void Close()
-        {
-            CloseInternalCallback = null;
-            CloseInternal();
         }
     }
 }

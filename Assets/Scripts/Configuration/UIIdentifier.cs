@@ -5,6 +5,7 @@ namespace CircleOfLife.Configuration
         MessageBox,
         UISample,
         PersonList,
-        MatchDetail
+        MatchDetail,
+        UserInfo
     }
 }

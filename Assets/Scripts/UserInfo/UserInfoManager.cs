@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using CircleOfLife.General;
+using GuessUnity;
 using TMPro;
 using UnityEditor.VersionControl;
 using UnityEngine;
@@ -43,6 +44,7 @@ namespace CircleOfLife
             childCount = transform.childCount;
             for (int i = 0; i < childCount; i++)
             {
+                // 这个用 Inspector 绑定会比较好，Alpha 阶段后面可以改一下
                 Transform child = transform.GetChild(i);
                 Transform readObj = child.GetChild(0);
                 Transform updateObj = child.GetChild(1);
@@ -60,7 +62,7 @@ namespace CircleOfLife
         public async void GetUserInfo()
         {
             // 从服务器获取用户信息
-            userInfo = await Server.Get<UserInfo>(userInfoPath, ("Account", "?"));
+            userInfo = await Server.Get<UserInfo>(userInfoPath, ("Account", LoginManager.Account));
             SetContext();
         }
 
@@ -70,7 +72,8 @@ namespace CircleOfLife
             "\n电话号码" + updateInfoRequest.PhoneNumber +
             "\n地址" + updateInfoRequest.Address +
             "\n账号" + updateInfoRequest.Account));
-            StatusData context = await Server.Post<StatusData>(userInfoPath, updateInfoRequest);
+            updateInfoRequest.Account = LoginManager.Account;
+            StatusData context = await Server.Post<StatusData>("/api/user/updateinfo", updateInfoRequest);
             if (context.Success)
             {
                 MessageBox.Open(("修改成功!", context.Message));

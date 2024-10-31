@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CircleOfLife.Configuration;
 using CircleOfLife.General;
+using GuessUnity;
 using Milease.Core.UI;
 using Milease.Enums;
 using Milease.Utils;
+using Milutools.Milutools.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,11 +34,19 @@ namespace CircleOfLife
         public RectTransform DateSortRect, StageSortRect;
         public Image DateSortIcon, StageSortIcon;
 
+        public TMP_Text SimulatedTimeText;
+
         private void Awake()
         {
             FetchEventList();
+            GetSimulatedTime();
         }
 
+        public void OpenUserInfo()
+        {
+            UIManager.Get(UIIdentifier.UserInfo).Open();
+        }
+        
         public void SwitchDateSort()
         {
             sortDate = !sortDate;
@@ -54,8 +65,16 @@ namespace CircleOfLife
             UpdateEventListView();
         }
 
+        private async void GetSimulatedTime()
+        {
+            var timeData = await Server.Get<TimeData>("/api/time/get");
+            SimulatedTime = timeData.ServerTime;
+            SimulatedTimeText.text = $"\u231a 当前服务器模拟时间\n     <color=grey>{SimulatedTime}";
+        }
+        
         private async void FetchEventList()
         {
+            UserGuessList = await Server.Get<GuessList>("/api/guess/list", ("userID", LoginManager.Account));
             allEvents = await Server.Get<EventList>("/api/event/list");
             MonthDropDown.options.Clear();
             monthReference.Clear();
@@ -66,6 +85,11 @@ namespace CircleOfLife
             }
 
             MonthDropDown.value = 0;
+        }
+
+        private async void FetchGuessList()
+        {
+            UserGuessList = await Server.Get<GuessList>("/api/guess/list", ("userID", LoginManager.Account));
         }
 
         public void UpdateDayDropDown()
@@ -82,6 +106,7 @@ namespace CircleOfLife
             }
 
             DayDropDown.value = 0;
+            UpdateEventListView();
         }
         
         public void UpdateEventListView()

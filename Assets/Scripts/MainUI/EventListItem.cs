@@ -73,7 +73,7 @@ namespace CircleOfLife
             }
             Start.color = Status.color = Title.color = color;
             
-            //Guessed.SetActive(MainUIController.UserGuessList.Guesses.Exists(x => x.EventID == data.ID));
+            Guessed.SetActive(MainUIController.UserGuessList.Guesses.Exists(x => x.EventID == data.ID));
         }
 
         public override void AdjustAppearance(float pos)

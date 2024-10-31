@@ -52,6 +52,7 @@ namespace CircleOfLife.Configuration
                 UI.FromResources(UIIdentifier.UISample, "UI/UISample"),
                 UI.FromResources(UIIdentifier.PersonList, "UI/PersonList"),
                 UI.FromResources(UIIdentifier.MatchDetail, "UI/MatchDetail"),
+                UI.FromResources(UIIdentifier.UserInfo, "UI/UserInfo"),
             });
         }
     }
