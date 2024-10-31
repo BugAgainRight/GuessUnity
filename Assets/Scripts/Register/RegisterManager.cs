@@ -2,6 +2,7 @@ using CircleOfLife.Configuration;
 using CircleOfLife.General;
 using Milutools.SceneRouter;
 using System;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -55,9 +56,42 @@ namespace GuessUnity
             SceneRouter.Back();
         }
 
-        //对用户名和密码的初步校验
-        //合法性要求：长度大于6，小于20
-        bool JudgeFormat(string content, bool isAccount)
+        public void PasswordOnEndEdit()
+        {
+            Debug.Log(CheckSecurityLevel(PasswordInput1.text));
+        }
+
+        //判断密码安全性，可接受的输入（数字、小写字母、大写字母、符号）
+        //安全性标准：极低（只有其中一种），低（只有其中两种），中（只有其中三种），高（有其中四种）
+        string CheckSecurityLevel(string password)
+        {
+            int level=0;
+            int digit = 0, lower = 0, upper = 0, pun = 0;
+
+            foreach (char ch in password)
+            {
+                if (ch <= '9' && ch >= '0') digit++;
+                else if (ch <= 'z' && ch >= 'a') lower++;
+                else if (ch <= 'Z' && ch >= 'A') upper++;
+                else pun++;
+            }
+
+            if (digit != 0) level++;
+            if(lower!= 0) level++;
+            if (upper!= 0) level++;
+            if (pun!= 0) level++;
+
+            if (level == 1) return "weak";
+            else if (level == 2) return "medium low";
+            else if (level == 3) return "medium high";
+            else if (level == 4) return "high";
+            else return "不应该";
+        }
+
+
+            //对用户名和密码的初步校验
+            //合法性要求：长度大于6，小于20
+            bool JudgeFormat(string content, bool isAccount)
         {
             string message;
 
