@@ -10,6 +10,7 @@ using Milease.Enums;
 using Milease.Utils;
 using Milutools.Milutools.UI;
 using Milutools.SceneRouter;
+using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,8 @@ namespace CircleOfLife
 {
     public class MainUIController : MonoBehaviour
     {
+        public static MessageReadList ReadList;
+        
         public static GuessList UserGuessList;
         public static DateTime SimulatedTime;
         
@@ -40,11 +43,38 @@ namespace CircleOfLife
         public TMP_Text SimulatedTimeText;
 
         private bool redeemOpen = false;
+
+        private MessageList msgList = new MessageList();
+
+        public GameObject Unseen;
         
         private void Awake()
         {
+            if (ReadList != null)
+            {
+                return;
+            }
+            ReadList = new MessageReadList();
+            if (PlayerPrefs.GetString("read", "") != "")
+            {
+                ReadList = JsonConvert.DeserializeObject<MessageReadList>(PlayerPrefs.GetString("read", ""));
+            }
+            
             FetchEventList();
             GetSimulatedTime();
+            FetchMessages();
+        }
+        
+        private async void FetchMessages()
+        {
+            msgList = await Server.Get<MessageList>("/api/user/messages", ("account", LoginManager.Account));
+            Unseen.SetActive(msgList.Messages.Any(x => !ReadList.ReadMessages.Contains(x.ID)));
+        }
+
+        public void OpenMessageUI()
+        {
+            MessageUI.Open(msgList);
+            Unseen.SetActive(false);
         }
 
         public void OpenUserInfo()

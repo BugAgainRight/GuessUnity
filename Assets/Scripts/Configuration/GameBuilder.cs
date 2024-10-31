@@ -54,7 +54,8 @@ namespace CircleOfLife.Configuration
                 UI.FromResources(UIIdentifier.UserInfo, "UI/UserInfo"),
                 UI.FromResources(UIIdentifier.Register, "UI/Register"),
                 UI.FromResources(UIIdentifier.TimeSelecter, "UI/TimeSelecter"),
-                UI.FromResources(UIIdentifier.RedeemUI, "UI/RedeemUI")
+                UI.FromResources(UIIdentifier.RedeemUI, "UI/RedeemUI"),
+                UI.FromResources(UIIdentifier.MessageUI, "UI/MessageUI")
             });
         }
     }
