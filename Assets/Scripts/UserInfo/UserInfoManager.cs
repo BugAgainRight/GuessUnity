@@ -25,7 +25,7 @@ namespace CircleOfLife
         private string userInfoPath = "api/user/info";
         private ReadMode readMode;
         public Transform ButtonPannel;
-        public TMP_Text Account;
+        public TMP_Text Account, Points;
         
         private void Awake()
         {
@@ -102,6 +102,8 @@ namespace CircleOfLife
             inputTextList[1].text = userInfo.PhoneNumber;
             inputTextList[2].text = userInfo.Address;
             inputTextList[3].text = userInfo.Account;
+
+            Points.text = $"积分：{userInfo.Points:F2}";
         }
         public void SetContextFromUpdateInfoRequest()
         {

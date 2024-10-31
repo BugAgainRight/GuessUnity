@@ -38,6 +38,7 @@ public class UserInfo
     public string Name;
     public string PhoneNumber;
     public string Address;
+    public double Points;
 }
 
 [Serializable]
@@ -85,8 +86,41 @@ public class TimeData
     public DateTime ServerTime;
 }
 
+[Serializable]
 public class EventGuessData
 {
     public int[] GuessCount;
     public int UserGuess;
+}
+
+[Serializable]
+public class PrizeList{
+    public List<Prize> Prizes = new();
+}
+
+[Serializable]
+public class Prize{
+    public string ID;
+    public string Name;
+    public int Stock;//剩余库存数量
+    public double PointsRequired;//兑换一件所需要的积分
+    public bool Redeemed;//true表示用户已兑换，false表示用户未兑换
+}
+
+[Serializable]
+public class MessageList{
+    public List<MessageData> Messages = new();
+}
+    
+[Serializable]
+public class MessageData{
+    public string ID = Guid.NewGuid().ToString();
+    public string Content;
+    public DateTime Time;
+}
+
+[Serializable]
+public class MessageReadList
+{
+    public List<string> ReadMessages = new();
 }

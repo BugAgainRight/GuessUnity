@@ -76,8 +76,8 @@ namespace CircleOfLife
             guessData.GuessWinner = eventGuessData.UserGuess;
             int allCount = eventGuessData.GuessCount[0] + eventGuessData.GuessCount[1];
             allCount = Mathf.Max(1, allCount);
-            ARate.text = (((int)(100f * eventGuessData.GuessCount[0] / allCount)) / 100f).ToString();
-            BRate.text = (((int)(100f * eventGuessData.GuessCount[1] / allCount)) / 100f).ToString();
+            ARate.text = (((int)(100f * eventGuessData.GuessCount[0] / allCount)) / 100f).ToString("F2");
+            BRate.text = (((int)(100f * eventGuessData.GuessCount[1] / allCount)) / 100f).ToString("F2");
 
             alreadySelect = guessData.GuessWinner != -1;
 

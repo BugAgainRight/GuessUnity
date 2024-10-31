@@ -35,8 +35,12 @@ namespace CircleOfLife
         public RectTransform DateSortRect, StageSortRect;
         public Image DateSortIcon, StageSortIcon;
 
+        public Toggle MineOnly;
+        
         public TMP_Text SimulatedTimeText;
 
+        private bool redeemOpen = false;
+        
         private void Awake()
         {
             FetchEventList();
@@ -48,6 +52,11 @@ namespace CircleOfLife
             UIManager.Get(UIIdentifier.UserInfo).Open();
         }
 
+        public void Refresh()
+        {
+            SceneRouter.GoTo(SceneIdentifier.MainPage);
+        }
+        
         public void ModifySimulatedTime()
         {
             TimeSelecterUI.Open(SimulatedTime,  (time) =>
@@ -59,7 +68,7 @@ namespace CircleOfLife
 
                 if (time < SimulatedTime)
                 {
-                    MessageBox.Open(("时间倒流", "您设定了一个比当前更早的模拟时间，这个操作不会还原已经结算的竞猜操作和积分流动，您确定一定要这么做吗？"), (o) =>
+                    MessageBox.Open(("时间倒流", "您设定了一个比当前更早的模拟时间，这个操作不会还原已经结算的竞猜操作和积分流动（仅供测试功能使用），您确定一定要这么做吗？"), (o) =>
                     {
                         if (o == MessageBox.Operation.Deny)
                         {
@@ -75,12 +84,25 @@ namespace CircleOfLife
             });
         }
 
+        public async void OpenRedeemUI()
+        {
+            if (redeemOpen)
+            {
+                return;
+            }
+
+            redeemOpen = true;
+            var list = await Server.Get<PrizeList>("/api/prizes/info", ("account", LoginManager.Account));
+            RedeemUI.Open(list);
+            redeemOpen = false;
+        }
+
         private async void ChangeTime(DateTime time)
         {
             var state = await Server.Get<StatusData>("/api/time/set", ("time", time.ToString("o")));
             if (state.Success)
             {
-                MessageBox.Open(("修改成功", "服务器模拟时间已修改。"), (_) =>
+                MessageBox.Open(("修改成功", "服务器模拟时间已修改。\n<color=red>若当前同时有其他用户在测试，其他用户需要点击“刷新页面”更新配置。"), (_) =>
                 {
                     SceneRouter.GoTo(SceneIdentifier.MainPage);
                 });
@@ -185,6 +207,11 @@ namespace CircleOfLife
                         events = events.Where(x => SimulatedTime < x.StartGuessTime);
                         break;
                 }
+            }
+
+            if (MineOnly.isOn)
+            {
+                events = events.Where(x => UserGuessList.Guesses.Exists(y => y.EventID == x.ID));
             }
             
             foreach (var e in events)

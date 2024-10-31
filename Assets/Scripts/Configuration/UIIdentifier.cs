@@ -8,6 +8,7 @@ namespace CircleOfLife.Configuration
         MatchDetail,
         UserInfo,
         Register,
-        TimeSelecter
+        TimeSelecter,
+        RedeemUI
     }
 }
