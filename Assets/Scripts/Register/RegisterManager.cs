@@ -15,6 +15,8 @@ namespace GuessUnity
 {
     public class RegisterManager : MonoBehaviour
     {
+        public RegisterUI UI;
+        
         public TMP_InputField AccountInput, PasswordInput1, PasswordInput2, IDInput;
         public TMP_Text SecurityWarning;
         public class RegisterData
@@ -82,12 +84,12 @@ namespace GuessUnity
             if (upper!= 0) level++;
             if (pun!= 0) level++;
 
-            if (level == 1) return "密码安全性：虚弱";
-            else if (level == 2) return "密码安全性：中低";
-            else if (level == 3) return "密码安全性：中高";
-            else if (level == 4) return "密码安全性：高";
+            if (level == 1) return "🚨 密码安全性：虚弱";
+            else if (level == 2) return "⚠️ 密码安全性：中低";
+            else if (level == 3) return "✅ 密码安全性：中高";
+            else if (level == 4) return "👍 密码安全性：高";
             //密码为空，提示输入
-            else return "密码的长度在6~20位之间，应至少包含数字和大小写字母";
+            else return ""; //密码的长度在6~20位之间，应至少包含数字和大小写字母 （太长了装不下了先这样吧，悲）
         }
 
 
@@ -248,7 +250,7 @@ namespace GuessUnity
                 //注册成功，进入登录界面
                 MessageBox.Open(("注册成功！", "现在可以前往登录了。"), (_) =>
                 {
-                    SceneRouter.GoTo(SceneIdentifier.LoginPage);
+                    UI.Close();
                 });
             }
 

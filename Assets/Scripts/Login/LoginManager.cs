@@ -2,6 +2,7 @@ using CircleOfLife.Configuration;
 using CircleOfLife.General;
 using Milutools.SceneRouter;
 using System.Threading.Tasks;
+using Milutools.Milutools.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -58,7 +59,7 @@ namespace GuessUnity
         public void GoToRegister()
         {
             //前往注册界面
-            SceneRouter.GoTo(SceneIdentifier.RegisterPage);
+            RegisterUI.Open(null);
         }
 
             //对用户名和密码的初步校验

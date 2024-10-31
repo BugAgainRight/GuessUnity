@@ -6,6 +6,7 @@ namespace CircleOfLife.Configuration
         UISample,
         PersonList,
         MatchDetail,
-        UserInfo
+        UserInfo,
+        Register
     }
 }

@@ -27,7 +27,6 @@ namespace CircleOfLife.Configuration
                 {
                     // 场景节点：场景ID，自定义路径，场景名
                     SceneRouter.Root(SceneIdentifier.LoginPage, "Login"), // 设置根节点
-                    SceneRouter.Node(SceneIdentifier.RegisterPage, "register", "Register"),
                     SceneRouter.Node(SceneIdentifier.MainPage, "main", "MainUI")
                 },
                 LoadingAnimators = new []
@@ -53,6 +52,7 @@ namespace CircleOfLife.Configuration
                 UI.FromResources(UIIdentifier.PersonList, "UI/PersonList"),
                 UI.FromResources(UIIdentifier.MatchDetail, "UI/MatchDetail"),
                 UI.FromResources(UIIdentifier.UserInfo, "UI/UserInfo"),
+                UI.FromResources(UIIdentifier.Register, "UI/Register")
             });
         }
     }
