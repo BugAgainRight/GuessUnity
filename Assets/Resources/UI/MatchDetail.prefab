@@ -1165,10 +1165,14 @@ PrefabInstance:
     - target: {fileID: 3559085866691048258, guid: e681fbc8b5d4ff74e8391897c0ea29bd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6083453836702082970}
+      objectReference: {fileID: 7659223272545732803}
     - target: {fileID: 3559085866691048258, guid: e681fbc8b5d4ff74e8391897c0ea29bd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: Quiz
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559085866691048258, guid: e681fbc8b5d4ff74e8391897c0ea29bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CircleOfLife.MatchDetailUI, CircleOfLife
       objectReference: {fileID: 0}
     - target: {fileID: 6862586534669668404, guid: e681fbc8b5d4ff74e8391897c0ea29bd, type: 3}
       propertyPath: m_Pivot.x
@@ -1415,6 +1419,10 @@ PrefabInstance:
       value: Rate
       objectReference: {fileID: 0}
     - target: {fileID: 4536220617299796613, guid: 55ee3073a33944d43a64ca9c771d80b9, type: 3}
+      propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536220617299796613, guid: 55ee3073a33944d43a64ca9c771d80b9, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6
       objectReference: {fileID: 0}
@@ -1581,6 +1589,10 @@ PrefabInstance:
     - target: {fileID: 3726826645905205746, guid: 55ee3073a33944d43a64ca9c771d80b9, type: 3}
       propertyPath: m_Name
       value: Rate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536220617299796613, guid: 55ee3073a33944d43a64ca9c771d80b9, type: 3}
+      propertyPath: m_IsOn
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4536220617299796613, guid: 55ee3073a33944d43a64ca9c771d80b9, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode

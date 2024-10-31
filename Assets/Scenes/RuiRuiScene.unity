@@ -447,6 +447,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MatchDetail
       objectReference: {fileID: 0}
+    - target: {fileID: 6083453836702082970, guid: 958641c0dbfb5884cb54950f7016da86, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7422748871078233895, guid: 958641c0dbfb5884cb54950f7016da86, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

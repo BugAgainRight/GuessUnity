@@ -4,6 +4,7 @@ using Milease.Core.UI;
 using Milutools.Milutools.UI;
 using System.Collections;
 using System.Collections.Generic;
+using GuessUnity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ namespace CircleOfLife
     }
     public class MatchDetailUI : ManagedUI<MatchDetailUI, Event>
     {
-        public static string TmpAccount = "123456";
+        public static string TmpAccount => LoginManager.Account;
         public static System.DateTime NowTime=>MainUIController.SimulatedTime;
         public TextMeshProUGUI MatchName;
         public TextMeshProUGUI PartyANames;
@@ -75,16 +76,16 @@ namespace CircleOfLife
 
             alreadySelect = guessData.GuessWinner != -1;
 
-            finishGuess = eventData.EventTime < NowTime;
-            beginGuess = eventData.StartGuessTime < NowTime;
+            finishGuess = eventData.EventTime <= NowTime;
+            beginGuess = eventData.StartGuessTime <= NowTime;
 
-            if (eventData.EndGuessTime < NowTime)
+            if (eventData.EndGuessTime <= NowTime)
             {
                 fakeButtonWord = "已结束";
                 if (eventData.Winner == 0) WinnerA.SetActive(true);
                 else if (eventData.Winner == 1) WinnerB.SetActive(true);
             }
-            else if (finishGuess) fakeButtonWord = "结束竞猜";
+            else if (finishGuess) fakeButtonWord = "等待公布结果";
             else if (alreadySelect) fakeButtonWord = "已经竞猜";
             else if (!beginGuess) fakeButtonWord = "竞猜未开始";
 
@@ -157,6 +158,12 @@ namespace CircleOfLife
 
         public void Quiz()
         {
+            if (!AToggle.isOn && !BToggle.isOn)
+            {
+                MessageBox.Open(("竞猜失败", "需要选择一方才能完成竞猜哦！"));
+                return;
+            }
+            
             bool isGuessA = AToggle.isOn;
             bool isTeamWork = eventData.PartyANames.Length > 1;
             string guessWinnerName;
