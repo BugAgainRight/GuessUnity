@@ -19,6 +19,7 @@ namespace CircleOfLife
 {
     public class MainUIController : MonoBehaviour
     {
+        public static MainUIController Instance;
         public static MessageReadList ReadList;
         
         public static GuessList UserGuessList;
@@ -50,6 +51,8 @@ namespace CircleOfLife
         
         private void Awake()
         {
+            Instance = this;
+            
             if (ReadList == null)
             {
                 ReadList = new MessageReadList();
@@ -182,7 +185,7 @@ namespace CircleOfLife
             MonthDropDown.value = 0;
         }
 
-        private async void FetchGuessList()
+        public async void FetchGuessList()
         {
             UserGuessList = await Server.Get<GuessList>("/api/guess/list", ("userID", LoginManager.Account));
         }

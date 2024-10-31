@@ -38,6 +38,11 @@ namespace CircleOfLife
 
         }
 
+        public void ExitWithNoChanges()
+        {
+            Close(receivedDateTime);
+        }
+        
         public void Exit()
         {
             Close(new DateTime(

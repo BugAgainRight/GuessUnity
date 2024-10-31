@@ -24,7 +24,10 @@ namespace CircleOfLife
         public override void OnSelect(PointerEventData eventData)
         {
             var data = (Event)Binding;
-            MatchDetailUI.Open(data);
+            MatchDetailUI.Open(data, () =>
+            {
+                MainUIController.Instance.FetchGuessList();
+            });
         }
 
         protected override void OnInitialize()
