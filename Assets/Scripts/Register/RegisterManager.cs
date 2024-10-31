@@ -52,6 +52,7 @@ namespace GuessUnity
         public void GoToLogin()
         {
             Debug.Log("此处应前往登录界面");
+            SceneRouter.Back();
         }
 
         //对用户名和密码的初步校验
@@ -64,11 +65,11 @@ namespace GuessUnity
             {
                 if (isAccount)
                 {
-                    message = "不合法的用户名！";
+                    message = "用户名的长度应当在 6 ~ 20 位之间。"; // 反馈准确的提示
                     Clear("account");
                 }
                 else {
-                    message = "不合法的密码！";
+                    message = "密码的长度应当在 6 ~ 20 位之间。";
                     Clear("password1");
                 }
             }
@@ -81,7 +82,7 @@ namespace GuessUnity
         //清除错误输入
         void Clear(string type)
         {
-            if(type=="account") AccountInput.text = "";
+            if (type =="account") AccountInput.text = "";
             if (type == "password1") PasswordInput1.text = "";
             if (type == "password2") PasswordInput2.text = "";
             if (type == "id") IDInput.text = "";
@@ -93,8 +94,8 @@ namespace GuessUnity
             if (p1 != p2)
             {
                 MessageBox.Open(("注册失败", "两次输入的密码不一致！"));
-                Clear("password1");
-                Clear("password2");
+                //Clear("password1");
+                Clear("password2"); // 只清空第二次输入会比较好
                 return false;
             }
             return true;
@@ -200,15 +201,19 @@ namespace GuessUnity
             if (!state.Success)
             {
                 MessageBox.Open(("注册失败", state.Message));
-                Clear("account");
+                /**Clear("account");
                 Clear("password1");
                 Clear("password2");
-                Clear("id");
+                Clear("id");**/
+                // 不要全部清空感觉比较好
             }
             else
             {
                 //注册成功，进入登录界面
-                //SceneRouter.GoTo
+                MessageBox.Open(("注册成功！", "现在可以前往登录了。"), (_) =>
+                {
+                    SceneRouter.GoTo(SceneIdentifier.LoginPage);
+                });
             }
 
         }

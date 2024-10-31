@@ -2,7 +2,7 @@
 {
     public enum SceneIdentifier
     {
-        WeatherTest,
-        MilutoolsSample, SceneRouterSample
+        SceneRouterSample,
+        LoginPage, RegisterPage, MainPage
     }
 }

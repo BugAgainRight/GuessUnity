@@ -58,7 +58,7 @@ namespace GuessUnity
         public void GoToRegister()
         {
             //前往注册界面
-            Debug.Log("此处应前往注册界面");
+            SceneRouter.GoTo(SceneIdentifier.RegisterPage);
         }
 
             //对用户名和密码的初步校验
@@ -95,7 +95,7 @@ namespace GuessUnity
             //清除错误输入
             void Clear()
             {
-                AccountInput.text = "";
+                //AccountInput.text = "";
                 PasswordInput.text = "";
             }
 
@@ -114,13 +114,10 @@ namespace GuessUnity
                 }
                 else
                 {
-                //校验成功，进入主界面
-                //SceneRouter.GoTo
-                Debug.Log("此处应前往主界面");
+                    //校验成功，进入主界面
+                    SceneRouter.GoTo(SceneIdentifier.MainPage);
                 }
-
             }
-
-         
+            
         }
     }

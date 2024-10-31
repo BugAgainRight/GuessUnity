@@ -215,6 +215,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143526927}
     m_Modifications:
+    - target: {fileID: 762266895061140617, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
+      propertyPath: m_text
+      value: "\u8BF7\u518D\u6B21\u8F93\u5165\u5BC6\u7801..."
+      objectReference: {fileID: 0}
     - target: {fileID: 1934232842946687859, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
       propertyPath: m_InputType
       value: 2
@@ -707,6 +711,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143526927}
     m_Modifications:
+    - target: {fileID: 762266895061140617, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
+      propertyPath: m_text
+      value: "\u8BF7\u8F93\u5165\u5BC6\u7801..."
+      objectReference: {fileID: 0}
     - target: {fileID: 1934232842946687859, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
       propertyPath: m_InputType
       value: 2
@@ -821,6 +829,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143526927}
     m_Modifications:
+    - target: {fileID: 762266895061140617, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
+      propertyPath: m_text
+      value: "\u8BF7\u8F93\u5165\u7528\u6237\u540D..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934232842946687859, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
+      propertyPath: m_InputType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4329951115761113356, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1051,6 +1067,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143526927}
     m_Modifications:
+    - target: {fileID: 762266895061140617, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
+      propertyPath: m_text
+      value: "\u8BF7\u8F93\u5165\u8EAB\u4EFD\u8BC1\u53F7\u7801..."
+      objectReference: {fileID: 0}
     - target: {fileID: 4329951115761113356, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
