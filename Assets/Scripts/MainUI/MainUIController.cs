@@ -9,6 +9,7 @@ using Milease.Core.UI;
 using Milease.Enums;
 using Milease.Utils;
 using Milutools.Milutools.UI;
+using Milutools.SceneRouter;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,7 +47,50 @@ namespace CircleOfLife
         {
             UIManager.Get(UIIdentifier.UserInfo).Open();
         }
-        
+
+        public void ModifySimulatedTime()
+        {
+            TimeSelecterUI.Open(SimulatedTime,  (time) =>
+            {
+                if (time.Equals(SimulatedTime))
+                {
+                    return;
+                }
+
+                if (time < SimulatedTime)
+                {
+                    MessageBox.Open(("时间倒流", "您设定了一个比当前更早的模拟时间，这个操作不会还原已经结算的竞猜操作和积分流动，您确定一定要这么做吗？"), (o) =>
+                    {
+                        if (o == MessageBox.Operation.Deny)
+                        {
+                            return;
+                        }
+
+                        ChangeTime(time);
+                    });
+                    return;
+                }
+                
+                ChangeTime(time);
+            });
+        }
+
+        private async void ChangeTime(DateTime time)
+        {
+            var state = await Server.Get<StatusData>("/api/time/set", ("time", time.ToString("o")));
+            if (state.Success)
+            {
+                MessageBox.Open(("修改成功", "服务器模拟时间已修改。"), (_) =>
+                {
+                    SceneRouter.GoTo(SceneIdentifier.MainPage);
+                });
+            }
+            else
+            {
+                MessageBox.Open(("修改失败！", state.Message));
+            }
+        }
+
         public void SwitchDateSort()
         {
             sortDate = !sortDate;
