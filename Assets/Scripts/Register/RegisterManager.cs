@@ -16,6 +16,7 @@ namespace GuessUnity
     public class RegisterManager : MonoBehaviour
     {
         public TMP_InputField AccountInput, PasswordInput1, PasswordInput2, IDInput;
+        public TMP_Text SecurityWarning;
         public class RegisterData
         {
             public string Account;
@@ -58,7 +59,7 @@ namespace GuessUnity
 
         public void PasswordOnEndEdit()
         {
-            Debug.Log(CheckSecurityLevel(PasswordInput1.text));
+            SecurityWarning.text=CheckSecurityLevel(PasswordInput1.text);
         }
 
         //判断密码安全性，可接受的输入（数字、小写字母、大写字母、符号）
@@ -81,11 +82,12 @@ namespace GuessUnity
             if (upper!= 0) level++;
             if (pun!= 0) level++;
 
-            if (level == 1) return "weak";
-            else if (level == 2) return "medium low";
-            else if (level == 3) return "medium high";
-            else if (level == 4) return "high";
-            else return "不应该";
+            if (level == 1) return "密码安全性：虚弱";
+            else if (level == 2) return "密码安全性：中低";
+            else if (level == 3) return "密码安全性：中高";
+            else if (level == 4) return "密码安全性：高";
+            //密码为空，提示输入
+            else return "密码的长度在6~20位之间，应至少包含数字和大小写字母";
         }
 
 
