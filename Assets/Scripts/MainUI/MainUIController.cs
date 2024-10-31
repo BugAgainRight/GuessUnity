@@ -50,14 +50,13 @@ namespace CircleOfLife
         
         private void Awake()
         {
-            if (ReadList != null)
+            if (ReadList == null)
             {
-                return;
-            }
-            ReadList = new MessageReadList();
-            if (PlayerPrefs.GetString("read", "") != "")
-            {
-                ReadList = JsonConvert.DeserializeObject<MessageReadList>(PlayerPrefs.GetString("read", ""));
+                ReadList = new MessageReadList();
+                if (PlayerPrefs.GetString("read", "") != "")
+                {
+                    ReadList = JsonConvert.DeserializeObject<MessageReadList>(PlayerPrefs.GetString("read", ""));
+                }
             }
             
             FetchEventList();
@@ -242,6 +241,7 @@ namespace CircleOfLife
             if (MineOnly.isOn)
             {
                 events = events.Where(x => UserGuessList.Guesses.Exists(y => y.EventID == x.ID));
+                events = events.Reverse();
             }
             
             foreach (var e in events)

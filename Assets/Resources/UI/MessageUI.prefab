@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9037325773775558905
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1092,10 +1092,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Milutools.Milutools.UI.ManagedUI`2[[CircleOfLife.RedeemUI,
-          CircleOfLife
-        m_MethodName: Close
+      - m_Target: {fileID: 3386720867631096880}
+        m_TargetAssemblyTypeName: CircleOfLife.MessageUI, CircleOfLife
+        m_MethodName: ReadAndClose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

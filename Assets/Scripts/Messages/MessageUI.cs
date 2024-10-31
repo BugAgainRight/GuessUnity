@@ -34,10 +34,12 @@ namespace CircleOfLife
             }
 
             PlayerPrefs.SetString("read", JsonConvert.SerializeObject(MainUIController.ReadList));
+            Close();
         }
 
         public override void AboutToOpen(MessageList parameter)
         {
+            parameter.Messages.Reverse();
             list = parameter;
             foreach (var msg in parameter.Messages)
             {

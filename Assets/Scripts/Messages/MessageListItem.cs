@@ -45,7 +45,7 @@ namespace CircleOfLife
             Content.text = data.Content;
             Time.text = data.Time.ToString();
             
-            NewMessage.SetActive(MainUIController.ReadList.ReadMessages.Contains(data.ID));
+            NewMessage.SetActive(!MainUIController.ReadList.ReadMessages.Contains(data.ID));
         }
 
         public override void AdjustAppearance(float pos)
