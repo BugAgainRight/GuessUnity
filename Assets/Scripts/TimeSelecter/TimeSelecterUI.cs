@@ -30,18 +30,23 @@ namespace CircleOfLife
 
         protected override void AboutToClose()
         {
-            Close(new DateTime(
-                int.Parse(YearLabel.text),
-                int.Parse(MonthLabel.text),
-                int.Parse(DayLabel.text),
-                int.Parse(HourLabel.text),
-                int.Parse(MinuteLabel.text),
-                0));
+
         }
 
         protected override void Begin()
         {
 
+        }
+
+        public void Exit()
+        {
+            Close(new DateTime(
+                            int.Parse(YearLabel.text),
+                            int.Parse(MonthLabel.text),
+                            int.Parse(DayLabel.text),
+                            int.Parse(HourLabel.text),
+                            int.Parse(MinuteLabel.text),
+                            0));
         }
 
 
