@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class Server
 {
-    public static readonly RestClient Client = new ("http://localhost:7595/");
+    public static readonly RestClient Client = new ("http://localhost:8633/");
 
     public static async Task<T> Get<T>(string url, params (string name, string value)[] query)
     {
