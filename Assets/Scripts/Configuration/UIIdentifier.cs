@@ -7,6 +7,7 @@ namespace CircleOfLife.Configuration
         PersonList,
         MatchDetail,
         UserInfo,
-        Register
+        Register,
+        TimeSelecter
     }
 }

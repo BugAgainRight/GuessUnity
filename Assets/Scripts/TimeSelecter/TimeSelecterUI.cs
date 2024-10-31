@@ -6,7 +6,7 @@ using TMPro;
 
 namespace CircleOfLife
 {
-    public class TimeSelecterUI : ManagedUI<TimeSelecterData, DateTime, DateTime>
+    public class TimeSelecterUI : ManagedUI<TimeSelecterUI, DateTime, DateTime>
     {
         private DateTime receivedDateTime;
         public TextMeshProUGUI YearLabel, MonthLabel, DayLabel, HourLabel, MinuteLabel;
