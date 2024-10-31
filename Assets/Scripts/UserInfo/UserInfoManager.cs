@@ -15,7 +15,7 @@ namespace CircleOfLife
     }
     public class UserInfoManager : MonoBehaviour
     {
-        private List<TextMeshProUGUI> inputTextList;
+        private List<TMP_InputField> inputTextList;
         private List<TextMeshProUGUI> contextList;
         private List<GameObject> readModeObjectList;
         private List<GameObject> updateModeObjectList;
@@ -25,10 +25,12 @@ namespace CircleOfLife
         private string userInfoPath = "api/user/info";
         private ReadMode readMode;
         public Transform ButtonPannel;
+        public TMP_Text Account;
+        
         private void Awake()
         {
-
-            inputTextList = new List<TextMeshProUGUI>();
+            Account.text = LoginManager.Account;
+            inputTextList = new List<TMP_InputField>();
             contextList = new List<TextMeshProUGUI>();
             readModeObjectList = new List<GameObject>();
             updateModeObjectList = new List<GameObject>();
@@ -49,10 +51,7 @@ namespace CircleOfLife
                 Transform readObj = child.GetChild(0);
                 Transform updateObj = child.GetChild(1);
                 Transform context = readObj.GetChild(0);
-                Transform inputArea = updateObj.GetChild(1).GetChild(0);
-                int inputAreaChildCount = inputArea.childCount;
-                Transform inputText = inputArea.GetChild(inputAreaChildCount - 1);
-                inputTextList.Add(inputText.GetComponent<TextMeshProUGUI>());
+                inputTextList.Add(updateObj.GetChild(1).GetComponent<TMP_InputField>());
                 contextList.Add(context.GetComponent<TextMeshProUGUI>());
                 readModeObjectList.Add(readObj.gameObject);
                 updateModeObjectList.Add(updateObj.gameObject);
@@ -68,10 +67,15 @@ namespace CircleOfLife
 
         public async void SendUpdateInfoRequest()
         {
-            MessageBox.Open(("提交成功:\n", "提交内容:\n用户名" + updateInfoRequest.Name +
+            if (string.IsNullOrEmpty(updateInfoRequest.Name))
+            {
+                MessageBox.Open(("错误", "用户名不能为空哦！"));
+                return;
+            }
+            /**MessageBox.Open(("提交成功:\n", "提交内容:\n用户名" + updateInfoRequest.Name +
             "\n电话号码" + updateInfoRequest.PhoneNumber +
             "\n地址" + updateInfoRequest.Address +
-            "\n账号" + updateInfoRequest.Account));
+            "\n账号" + updateInfoRequest.Account));**/
             updateInfoRequest.Account = LoginManager.Account;
             StatusData context = await Server.Post<StatusData>("/api/user/updateinfo", updateInfoRequest);
             if (context.Success)
@@ -81,7 +85,7 @@ namespace CircleOfLife
             }
             else
             {
-                MessageBox.Open(("修改失败:", context.Message));
+                MessageBox.Open(("修改失败！", context.Message));
             }
         }
         // Add other public methods or properties here if needed
@@ -93,6 +97,11 @@ namespace CircleOfLife
             contextList[1].text = userInfo.PhoneNumber;
             contextList[2].text = userInfo.Address;
             contextList[3].text = userInfo.Account;
+            
+            inputTextList[0].text = userInfo.Name;
+            inputTextList[1].text = userInfo.PhoneNumber;
+            inputTextList[2].text = userInfo.Address;
+            inputTextList[3].text = userInfo.Account;
         }
         public void SetContextFromUpdateInfoRequest()
         {
