@@ -2579,9 +2579,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Milthm.Settings.Views.ButtonSettingView, Milthm
-        m_MethodName: Click
+      - m_Target: {fileID: 356380860}
+        m_TargetAssemblyTypeName: GuessUnity.LoginManager, CircleOfLife
+        m_MethodName: GoToRegister
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2799,6 +2799,14 @@ PrefabInstance:
     - target: {fileID: 4752061006742296999, guid: 89fdbb50b1162924a879f83fb2d73446, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835806254105032724, guid: 89fdbb50b1162924a879f83fb2d73446, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToRegister
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835806254105032724, guid: 89fdbb50b1162924a879f83fb2d73446, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GuessUnity.LoginManager, CircleOfLife
       objectReference: {fileID: 0}
     - target: {fileID: 6052181991702937411, guid: 89fdbb50b1162924a879f83fb2d73446, type: 3}
       propertyPath: m_Pivot.x

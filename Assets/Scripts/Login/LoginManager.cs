@@ -39,20 +39,27 @@ namespace GuessUnity
                 account = AccountInput.text;
                 password = PasswordInput.text;
                 Account = account;
-                
+
                 Verify(account, password);
             }
             else
             {
-                string errorContent="";
+                string errorContent = "";
 
                 if (judgeAccount != "legal") errorContent += judgeAccount;
-                if(judgePassword!="legal") errorContent += judgePassword;
+                if (judgePassword != "legal") errorContent += judgePassword;
 
                 MessageBox.Open(("输入错误", errorContent));
-   
+
                 Clear();
             }
+        }
+
+        public void GoToRegister()
+        {
+            //前往注册界面
+            Debug.Log("此处应前往注册界面");
+        }
 
             //对用户名和密码的初步校验
             //合法性要求：长度大于6，小于20
@@ -107,8 +114,9 @@ namespace GuessUnity
                 }
                 else
                 {
-                    //校验成功，进入主界面
-                    //SceneRouter.GoTo
+                //校验成功，进入主界面
+                //SceneRouter.GoTo
+                Debug.Log("此处应前往主界面");
                 }
 
             }
@@ -116,4 +124,3 @@ namespace GuessUnity
          
         }
     }
-}

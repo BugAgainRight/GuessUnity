@@ -215,6 +215,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143526927}
     m_Modifications:
+    - target: {fileID: 1934232842946687859, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
+      propertyPath: m_InputType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934232842946687859, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
+      propertyPath: m_ContentType
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4329951115761113356, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -471,6 +479,18 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u8FD4\u56DE"
       objectReference: {fileID: 0}
+    - target: {fileID: 3559085866691048258, guid: e681fbc8b5d4ff74e8391897c0ea29bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 48478493}
+    - target: {fileID: 3559085866691048258, guid: e681fbc8b5d4ff74e8391897c0ea29bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToLogin
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559085866691048258, guid: e681fbc8b5d4ff74e8391897c0ea29bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GuessUnity.RegisterManager, CircleOfLife
+      objectReference: {fileID: 0}
     - target: {fileID: 6862586534669668404, guid: e681fbc8b5d4ff74e8391897c0ea29bd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -687,6 +707,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143526927}
     m_Modifications:
+    - target: {fileID: 1934232842946687859, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
+      propertyPath: m_InputType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934232842946687859, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
+      propertyPath: m_ContentType
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4329951115761113356, guid: 7ec9ebd5a458fa046a2c412a7bf61a01, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -48,6 +48,12 @@ namespace GuessUnity
             
         }
 
+        //返回登录界面（不注册的情况）
+        public void GoToLogin()
+        {
+            Debug.Log("此处应前往登录界面");
+        }
+
         //对用户名和密码的初步校验
         //合法性要求：长度大于6，小于20
         bool JudgeFormat(string content, bool isAccount)
