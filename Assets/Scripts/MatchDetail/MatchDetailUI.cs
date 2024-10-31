@@ -21,6 +21,7 @@ namespace CircleOfLife
         public static string TmpAccount => LoginManager.Account;
         public static System.DateTime NowTime=>MainUIController.SimulatedTime;
         public TextMeshProUGUI MatchName;
+        public TextMeshProUGUI MatchDetail;
         public TextMeshProUGUI PartyANames;
         public TextMeshProUGUI PartyBNames;
         public TextMeshProUGUI PartyACountry;
@@ -30,11 +31,14 @@ namespace CircleOfLife
         public TextMeshProUGUI FakeGuessButtonText;
         public GameObject GuessButton, FakeGuessButton;
         public GameObject WinnerA, WinnerB;
+        public Image BarA, BarB;
         public Toggle AToggle, BToggle;
         private bool alreadySelect = false;
         private bool finishGuess = false;
         private bool beginGuess = false;
         private string fakeButtonWord = "竞猜未开始!";
+
+        public Sprite WinBar, LoseBar;
 
         private GuessData guessData = new();
 
@@ -46,6 +50,7 @@ namespace CircleOfLife
         {
             eventData = parameter;
             MatchName.text = parameter.Name;
+            MatchDetail.text = "⌚ 结果公布时间：" + parameter.EndGuessTime + "\n✅ 竞猜截止时间：" + parameter.EventTime;
 
             PartyANames.text = eventData.PartyANames[0];
             PartyBNames.text = eventData.PartyBNames[0];
@@ -71,8 +76,8 @@ namespace CircleOfLife
             guessData.GuessWinner = eventGuessData.UserGuess;
             int allCount = eventGuessData.GuessCount[0] + eventGuessData.GuessCount[1];
             allCount = Mathf.Max(1, allCount);
-            ARate.text = "当前赔率：" + (((int)(100f * eventGuessData.GuessCount[0] / allCount)) / 100f).ToString();
-            BRate.text = "当前赔率：" + (((int)(100f * eventGuessData.GuessCount[1] / allCount)) / 100f).ToString();
+            ARate.text = (((int)(100f * eventGuessData.GuessCount[0] / allCount)) / 100f).ToString();
+            BRate.text = (((int)(100f * eventGuessData.GuessCount[1] / allCount)) / 100f).ToString();
 
             alreadySelect = guessData.GuessWinner != -1;
 
@@ -82,8 +87,20 @@ namespace CircleOfLife
             if (eventData.EndGuessTime <= NowTime)
             {
                 fakeButtonWord = "已结束";
-                if (eventData.Winner == 0) WinnerA.SetActive(true);
-                else if (eventData.Winner == 1) WinnerB.SetActive(true);
+                if (eventData.Winner == 0)
+                {
+                    WinnerA.SetActive(true);
+                    BarA.sprite = WinBar;
+                    BarB.sprite = LoseBar;
+                    ARate.gameObject.SetActive(false);
+                }
+                else if (eventData.Winner == 1)
+                {
+                    WinnerB.SetActive(true);
+                    BarB.sprite = WinBar;
+                    BarA.sprite = LoseBar;
+                    BRate.gameObject.SetActive(false);
+                }
             }
             else if (finishGuess) fakeButtonWord = "等待公布结果";
             else if (alreadySelect) fakeButtonWord = "已经竞猜";
@@ -91,6 +108,8 @@ namespace CircleOfLife
 
             FakeGuessButtonText.text = fakeButtonWord;
 
+            
+            
             if (CanGuess)
             {
                 GuessButton.SetActive(true);
